@@ -25,18 +25,36 @@
     });
   });
 
-  // Reveal on scroll
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          io.unobserve(entry.target);
-        }
-      });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
-  } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('is-visible'); });
+  // Reveal on scroll. Default-visible CSS ensures no content is ever stuck hidden.
+  // When JS + IntersectionObserver are available, we add a subtle entrance animation
+  // for elements that scroll into view; everything not yet observed shows immediately.
+  var reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    reveals.forEach(function (el) { el.classList.add('is-visible'); });
+    return;
   }
+  // Mark anything already on screen as visible immediately, observe the rest.
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+  reveals.forEach(function (el) {
+    var r = el.getBoundingClientRect();
+    if (r.top < (window.innerHeight + 60)) {
+      // already on screen — leave visible (no animation)
+      return;
+    }
+    el.classList.add('pre-reveal');
+    io.observe(el);
+  });
+  // Safety fallback: after 4s, ensure any remaining off-screen elements are visible if user hasn't scrolled.
+  setTimeout(function () {
+    document.querySelectorAll('.reveal.pre-reveal:not(.is-visible)').forEach(function (el) {
+      el.classList.add('is-visible');
+    });
+  }, 4000);
 })();

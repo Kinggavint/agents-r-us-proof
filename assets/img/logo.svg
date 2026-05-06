@@ -1,14 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 60" role="img" aria-label="Agents R Us">
-  <g>
-    <!-- Mark: chevron-arrow representing automation/movement -->
-    <g transform="translate(8, 14)">
-      <rect x="0" y="0" width="32" height="32" rx="8" fill="#0B1F3A"/>
-      <path d="M9 10 L17 16 L9 22" stroke="#FF6B1A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-      <path d="M16 10 L24 16 L16 22" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-    </g>
-    <!-- Wordmark -->
-    <text x="52" y="38" font-family="'Space Grotesk', 'Inter', system-ui, sans-serif" font-size="22" font-weight="700" fill="#0B1F3A" letter-spacing="-0.5">
-      Agents<tspan fill="#FF6B1A">·</tspan>R<tspan fill="#FF6B1A">·</tspan>Us
-    </text>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 70" role="img" aria-label="Agents R Us">
+  <rect x="8" y="17" width="36" height="36" rx="9" fill="#0B1F3A"/>
+  <path d="M18 28 L27 35 L18 42" stroke="#FF6B1A" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M26 28 L35 35 L26 42" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="60" y="46" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="700" fill="#0B1F3A" letter-spacing="-0.5">Agents<tspan fill="#FF6B1A">·</tspan>R<tspan fill="#FF6B1A">·</tspan>Us</text>
 </svg>
